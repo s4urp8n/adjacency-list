@@ -1,6 +1,13 @@
 {
-  "name": "zver/package-template",
-  "description": "this is universal package template",
+  "name": "zver/adjacency-list",
+  "description": "Adjacency list package. Handle hierarhical data using Adjancency list pattern.",
+  "keuwords": [
+    "adjacency list",
+    "hierarchy",
+    "hierarchical",
+    "hierarchical data",
+    "adjacency"
+  ],
   "minimum-stability": "stable",
   "config": {
     "optimize-autoloader": true
