@@ -3,7 +3,7 @@
 namespace PackageTemplate
 {
     
-    include 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
+    @include 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
     
     use Zver\ArrayHelper;
     use Zver\StringHelper;
