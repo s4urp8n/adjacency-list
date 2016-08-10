@@ -32,7 +32,7 @@ $relations=[
 
 //Create a class or modify existed class to implements AdjacencyInterface and create array like this
 
-class AdjacencyListTest implements AdjacencyInterface
+class CustomClass implements AdjacencyInterface
 {
     
     protected $id = null;
@@ -55,10 +55,10 @@ class AdjacencyListTest implements AdjacencyInterface
 }
 
 $relations=[
-    new CustomClassImplementedAdjancencyInterface(), 
-    new CustomClassImplementedAdjancencyInterface(),
-    new CustomClassImplementedAdjancencyInterface(),
-    new CustomClassImplementedAdjancencyInterface(),
+    new CustomClass(1,null), 
+    new CustomClass(2,1),
+    new CustomClass(3,1),
+    new CustomClass(4,2),
     ...
 ];
 
@@ -93,7 +93,7 @@ $siblings=$item10->getSiblings();
 ```
 
 Code Coverage Report:       
-  2016-08-10 15:57:11       
+  2016-08-10 16:08:35       
                             
  Summary:                   
   Classes: 100.00% (3/3)    
