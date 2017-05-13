@@ -318,5 +318,38 @@ namespace Zver {
                 }, $this->getBranchSiblings()
             );
         }
+
+        public function getRecursiveDataProperty($property)
+        {
+
+            $result = [$this->getDataProperty($property)];
+
+            $currentParent = $this;
+
+            while ($currentParent->haveParent()) {
+
+                $currentParent = $currentParent->getParent();
+
+                $result[] = $currentParent->getDataProperty($property);
+
+            }
+
+            return ArrayHelper::load($result)
+                              ->reverseValues()
+                              ->get();
+        }
+
+        public function getDataProperty($property)
+        {
+            if (is_array($this->data) && array_key_exists($property, $this->data)) {
+                return $this->data[$property];
+            }
+
+            if (is_object($this->data) && property_exists($this->data, $property)) {
+                return $this->data->$property;
+            }
+
+            throw new \Exception('Can\'t get data property "' . $property . '"');
+        }
     }
 }

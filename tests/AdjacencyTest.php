@@ -245,4 +245,94 @@ class AdjacencyTest extends PHPUnit\Framework\TestCase
         }
     }
 
+    public function getTestRelations()
+    {
+
+        $obj = new stdClass();
+
+        $obj->p = 6;
+
+        return [
+            [
+                'id'     => 1,
+                'parent' => null,
+                'data'   => ['p' => 1],
+            ],
+            [
+                'id'     => 2,
+                'parent' => null,
+                'data'   => ['p' => 2],
+            ],
+            [
+                'id'     => 3,
+                'parent' => null,
+                'data'   => ['p' => 3],
+            ],
+            [
+                'id'     => 4,
+                'parent' => 3,
+                'data'   => ['p' => 4],
+            ],
+            [
+                'id'     => 5,
+                'parent' => 4,
+                'data'   => ['p' => 5],
+            ],
+            [
+                'id'     => 6,
+                'parent' => 5,
+                'data'   => $obj,
+            ],
+        ];
+
+    }
+
+    public function testDataProperty()
+    {
+        $list = \Zver\AdjacencyList::load($this->getTestRelations());
+
+        for ($i = 1; $i <= 6; $i++) {
+            $this->assertSame($list->find($i)
+                                   ->getDataProperty('p'), $i);
+        }
+    }
+
+    public function testDataPropertyException()
+    {
+        $this->expectException('\Exception');
+
+        $list = \Zver\AdjacencyList::load($this->getTestRelations());
+
+        $list->find(1)
+             ->getDataProperty('unexisted');
+
+    }
+
+    public function testRecursiveDataProperty()
+    {
+        $list = \Zver\AdjacencyList::load($this->getTestRelations());
+
+        $this->assertSame(
+            $list->find(6)
+                 ->getRecursiveDataProperty('p'),
+            [
+                3,
+                4,
+                5,
+                6,
+            ]
+        );
+
+        for ($i = 1; $i <= 3; $i++) {
+
+            $this->assertSame(
+                $list->find($i)
+                     ->getRecursiveDataProperty('p'),
+                [
+                    $i,
+                ]
+            );
+        }
+    }
+
 }
