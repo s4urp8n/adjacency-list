@@ -1,7 +1,7 @@
 <?php
-namespace Zver
-{
-    
+
+namespace Zver {
+
     /**
      * Interface AdjacencyInterface to handle hierarhical data of implemented class
      *
@@ -9,7 +9,7 @@ namespace Zver
      */
     interface AdjacencyInterface
     {
-        
+
         /**
          * This method must return array like:
          *

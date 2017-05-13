@@ -1,30 +1,26 @@
 {
-  "name": "zver/adjacency-list",
-  "description": "Adjacency list package. Handle hierarhical data using Adjancency list pattern.",
-  "keuwords": [
-    "adjacency list",
-    "hierarchy",
-    "hierarchical",
-    "hierarchical data",
-    "adjacency"
-  ],
+  "name": "zver/package-template",
+  "description": "this is universal package template for development and testing and composer distribution",
   "minimum-stability": "stable",
   "config": {
     "optimize-autoloader": true
   },
   "autoload": {
     "psr-4": {
-      "": "package/src/"
-    }
+      "": "src/"
+    },
+    "files": [
+      "src/Functions.php"
+    ]
   },
   "autoload-dev": {
     "psr-4": {
-      "": "package/tests/"
+      "": "tests/"
     }
   },
   "require": {
-    "zver/autoloader": "^1.0",
-    "zver/string-helper": "^1.0",
+    "zver/common": "^3.0",
+    "zver/string-helper": "^2.1",
     "zver/array-helper": "^1.0"
   },
   "require-dev": {

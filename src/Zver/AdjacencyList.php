@@ -1,7 +1,7 @@
 <?php
-namespace Zver
-{
-    
+
+namespace Zver {
+
     /**
      * Class AdjacencyList to handle hierarchical data using Adjancency list pattern
      *
@@ -9,65 +9,53 @@ namespace Zver
      */
     class AdjacencyList
     {
-        
+
         /**
          * Array to store all hierarhy elements
          *
          * @var array
          */
         protected $items = [];
-        
+
         /**
          * AdjacencyList constructor.
          * Loads elements according it's hierarhy relations.
          *
          * @param array $items
          *
-         * @throws \Zver\Exceptions\AdjacencyList\InvalidAdjacencyArgumentException
          */
         protected function __construct(array $items)
         {
-            if (!empty($items))
-            {
-                
+            if (!empty($items)) {
+
                 $items = array_values($items);
-                
-                if ($items[0] instanceof AdjacencyInterface)
-                {
+
+                if ($items[0] instanceof AdjacencyInterface) {
                     $items = array_map(
-                        function ($item)
-                        {
+                        function ($item) {
                             return $item->getAdjacency();
-                            
                         }, $items
                     );
                 }
-                
-                foreach ($items as $item)
-                {
+
+                foreach ($items as $item) {
                     $data = $item;
-                    
+
                     if (array_key_exists('id', $data) && (array_key_exists('parent', $data))
                         && array_key_exists(
                             'data', $data
                         )
-                    )
-                    {
-                        if (empty($data['parent']))
-                        {
+                    ) {
+                        if (empty($data['parent'])) {
                             $this->add($data['id'], $data['parent'], $data['data'], $items);
                         }
-                    }
-                    else
-                    {
-                        throw new Exceptions\AdjacencyList\InvalidAdjacencyArgumentException(
-                            __CLASS__ . ' item must contain associative array with keys: "id", "parent" and "data"'
-                        );
+                    } else {
+                        throw new \Exception(__CLASS__ . ' item must contain associative array with keys: "id", "parent" and "data"');
                     }
                 }
             }
         }
-        
+
         /**
          * Load items and return instance of AdjacencyList
          *
@@ -79,7 +67,7 @@ namespace Zver
         {
             return new static($items);
         }
-        
+
         /**
          * Add item into list as AdjacencyListItem
          *
@@ -93,10 +81,10 @@ namespace Zver
         protected function add($id, $parent, $data, &$relations)
         {
             $this->items[] = new AdjacencyListItem($id, $parent, $data, $relations);
-            
+
             return $this;
         }
-        
+
         /**
          * Alias for getList()
          *
@@ -107,7 +95,7 @@ namespace Zver
         {
             return $this->items;
         }
-        
+
         /**
          * Get loaded hierarhy list
          *
@@ -117,7 +105,7 @@ namespace Zver
         {
             return $this->items;
         }
-        
+
         /**
          * Find item in list using id and returns it.
          * If item not found returns false.
@@ -130,18 +118,16 @@ namespace Zver
         {
             $found = false;
             $this->walk(
-                function ($element) use (&$found, $id)
-                {
-                    if ($element->getId() == $id)
-                    {
+                function ($element) use (&$found, $id) {
+                    if ($element->getId() == $id) {
                         $found = $element;
                     }
                 }
             );
-            
+
             return $found;
         }
-        
+
         /**
          * Walk recursive all items and execute callback
          *
@@ -151,14 +137,13 @@ namespace Zver
          */
         public function walk($callback)
         {
-            foreach ($this->items as $item)
-            {
+            foreach ($this->items as $item) {
                 $item->walk($callback);
             }
-            
+
             return $this;
         }
-        
+
         /**
          * Get max item level in list
          *
@@ -168,19 +153,17 @@ namespace Zver
         {
             $max = 0;
             $this->walk(
-                function ($element) use (&$max)
-                {
+                function ($element) use (&$max) {
                     $level = $element->getLevel();
-                    if ($level > $max)
-                    {
+                    if ($level > $max) {
                         $max = $level;
                     }
                 }
             );
-            
+
             return $max;
         }
-        
+
         /**
          * Return true if list is empty, false otherwise.
          *
@@ -190,6 +173,6 @@ namespace Zver
         {
             return empty($this->items);
         }
-        
+
     }
 }

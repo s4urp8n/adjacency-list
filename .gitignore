@@ -9,13 +9,5 @@
 /nbdist/
 /nbactions.xml
 /vendor/
-/codecept.phar
-/codeception.yml
-/c3.php
 /composer.lock
-/phpDocumentor.phar
-/apigen.phar
-/phpdox.phar
-/phpdox.xml
-/tests/
-/docs
+/coverage
