@@ -305,17 +305,6 @@ class AdjacencyTest extends PHPUnit\Framework\TestCase
         }
     }
 
-    public function testDataPropertyException()
-    {
-        $this->expectException('\Exception');
-
-        $list = \Zver\AdjacencyList::load($this->getTestRelations());
-
-        $list->find(1)
-             ->getDataProperty('unexisted');
-
-    }
-
     public function testRecursiveDataProperty()
     {
         $list = \Zver\AdjacencyList::load($this->getTestRelations());
