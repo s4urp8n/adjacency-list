@@ -150,94 +150,102 @@ class AdjacencyTest extends PHPUnit\Framework\TestCase
 
                 switch ($found->getId()) {
 
-                    case 1: {
-                        $this->assertSame($found->getId(), 1);
-                        $this->assertSame($found->getData(), 'data1');
-                        $this->assertSame($found->getParentId(), null);
-                        $this->assertSame($found->getChildrenIds(), [3]);
-                        $this->assertSame($found->getRecursiveChildrenIds(), [3]);
-                        $this->assertSame($found->getRootParentId(), 1);
-                        $this->assertSame($found->getLevel(), 1);
-                        $this->assertSame($found->getBranchSiblingsIds(), []);
-                        break;
-                    }
-                    case 2: {
-                        $this->assertSame($found->getId(), 2);
-                        $this->assertSame($found->getData(), 'data2');
-                        $this->assertSame($found->getParentId(), null);
-                        $this->assertSame($found->getChildrenIds(), [4, 5]);
-                        $this->assertSame($found->getRecursiveChildrenIds(), [4, 5, 7, 8]);
-                        $this->assertSame($found->getRootParentId(), 2);
-                        $this->assertSame($found->getLevel(), 1);
-                        $this->assertSame($found->getBranchSiblingsIds(), []);
-                        break;
-                    }
-                    case 3: {
-                        $this->assertSame($found->getId(), 3);
-                        $this->assertSame($found->getData(), 'data3');
-                        $this->assertSame($found->getParentId(), 1);
-                        $this->assertSame($found->getChildrenIds(), []);
-                        $this->assertSame($found->getRecursiveChildrenIds(), []);
-                        $this->assertSame($found->getRootParentId(), 1);
-                        $this->assertSame($found->getLevel(), 2);
-                        $this->assertSame($found->getBranchSiblingsIds(), []);
-                        break;
-                    }
-                    case 4: {
-                        $this->assertSame($found->getId(), 4);
-                        $this->assertSame($found->getData(), 'data4');
-                        $this->assertSame($found->getParentId(), 2);
-                        $this->assertSame($found->getChildrenIds(), []);
-                        $this->assertSame($found->getRecursiveChildrenIds(), []);
-                        $this->assertSame($found->getRootParentId(), 2);
-                        $this->assertSame($found->getLevel(), 2);
-                        $this->assertSame($found->getBranchSiblingsIds(), [5]);
-                        break;
-                    }
-                    case 5: {
-                        $this->assertSame($found->getId(), 5);
-                        $this->assertSame($found->getData(), 'data5');
-                        $this->assertSame($found->getParentId(), 2);
-                        $this->assertSame($found->getChildrenIds(), [7]);
-                        $this->assertSame($found->getRecursiveChildrenIds(), [7, 8]);
-                        $this->assertSame($found->getRootParentId(), 2);
-                        $this->assertSame($found->getLevel(), 2);
-                        $this->assertSame($found->getBranchSiblingsIds(), [4]);
-                        break;
-                    }
-                    case 6: {
-                        $this->assertSame($found->getId(), 6);
-                        $this->assertSame($found->getData(), 'data6');
-                        $this->assertSame($found->getParentId(), null);
-                        $this->assertSame($found->getChildrenIds(), []);
-                        $this->assertSame($found->getRecursiveChildrenIds(), []);
-                        $this->assertSame($found->getRootParentId(), 6);
-                        $this->assertSame($found->getLevel(), 1);
-                        $this->assertSame($found->getBranchSiblingsIds(), []);
-                        break;
-                    }
-                    case 7: {
-                        $this->assertSame($found->getId(), 7);
-                        $this->assertSame($found->getData(), 'data7');
-                        $this->assertSame($found->getParentId(), 5);
-                        $this->assertSame($found->getChildrenIds(), [8]);
-                        $this->assertSame($found->getRecursiveChildrenIds(), [8]);
-                        $this->assertSame($found->getRootParentId(), 2);
-                        $this->assertSame($found->getLevel(), 3);
-                        $this->assertSame($found->getBranchSiblingsIds(), []);
-                        break;
-                    }
-                    case 8: {
-                        $this->assertSame($found->getId(), 8);
-                        $this->assertSame($found->getData(), 'data8');
-                        $this->assertSame($found->getParentId(), 7);
-                        $this->assertSame($found->getChildrenIds(), []);
-                        $this->assertSame($found->getRecursiveChildrenIds(), []);
-                        $this->assertSame($found->getRootParentId(), 2);
-                        $this->assertSame($found->getLevel(), 4);
-                        $this->assertSame($found->getBranchSiblingsIds(), []);
-                        break;
-                    }
+                    case 1:
+                        {
+                            $this->assertSame($found->getId(), 1);
+                            $this->assertSame($found->getData(), 'data1');
+                            $this->assertSame($found->getParentId(), null);
+                            $this->assertSame($found->getChildrenIds(), [3]);
+                            $this->assertSame($found->getRecursiveChildrenIds(), [3]);
+                            $this->assertSame($found->getRootParentId(), 1);
+                            $this->assertSame($found->getLevel(), 1);
+                            $this->assertSame($found->getBranchSiblingsIds(), []);
+                            break;
+                        }
+                    case 2:
+                        {
+                            $this->assertSame($found->getId(), 2);
+                            $this->assertSame($found->getData(), 'data2');
+                            $this->assertSame($found->getParentId(), null);
+                            $this->assertSame($found->getChildrenIds(), [4, 5]);
+                            $this->assertSame($found->getRecursiveChildrenIds(), [4, 5, 7, 8]);
+                            $this->assertSame($found->getRootParentId(), 2);
+                            $this->assertSame($found->getLevel(), 1);
+                            $this->assertSame($found->getBranchSiblingsIds(), []);
+                            break;
+                        }
+                    case 3:
+                        {
+                            $this->assertSame($found->getId(), 3);
+                            $this->assertSame($found->getData(), 'data3');
+                            $this->assertSame($found->getParentId(), 1);
+                            $this->assertSame($found->getChildrenIds(), []);
+                            $this->assertSame($found->getRecursiveChildrenIds(), []);
+                            $this->assertSame($found->getRootParentId(), 1);
+                            $this->assertSame($found->getLevel(), 2);
+                            $this->assertSame($found->getBranchSiblingsIds(), []);
+                            break;
+                        }
+                    case 4:
+                        {
+                            $this->assertSame($found->getId(), 4);
+                            $this->assertSame($found->getData(), 'data4');
+                            $this->assertSame($found->getParentId(), 2);
+                            $this->assertSame($found->getChildrenIds(), []);
+                            $this->assertSame($found->getRecursiveChildrenIds(), []);
+                            $this->assertSame($found->getRootParentId(), 2);
+                            $this->assertSame($found->getLevel(), 2);
+                            $this->assertSame($found->getBranchSiblingsIds(), [5]);
+                            break;
+                        }
+                    case 5:
+                        {
+                            $this->assertSame($found->getId(), 5);
+                            $this->assertSame($found->getData(), 'data5');
+                            $this->assertSame($found->getParentId(), 2);
+                            $this->assertSame($found->getChildrenIds(), [7]);
+                            $this->assertSame($found->getRecursiveChildrenIds(), [7, 8]);
+                            $this->assertSame($found->getRootParentId(), 2);
+                            $this->assertSame($found->getLevel(), 2);
+                            $this->assertSame($found->getBranchSiblingsIds(), [4]);
+                            break;
+                        }
+                    case 6:
+                        {
+                            $this->assertSame($found->getId(), 6);
+                            $this->assertSame($found->getData(), 'data6');
+                            $this->assertSame($found->getParentId(), null);
+                            $this->assertSame($found->getChildrenIds(), []);
+                            $this->assertSame($found->getRecursiveChildrenIds(), []);
+                            $this->assertSame($found->getRootParentId(), 6);
+                            $this->assertSame($found->getLevel(), 1);
+                            $this->assertSame($found->getBranchSiblingsIds(), []);
+                            break;
+                        }
+                    case 7:
+                        {
+                            $this->assertSame($found->getId(), 7);
+                            $this->assertSame($found->getData(), 'data7');
+                            $this->assertSame($found->getParentId(), 5);
+                            $this->assertSame($found->getChildrenIds(), [8]);
+                            $this->assertSame($found->getRecursiveChildrenIds(), [8]);
+                            $this->assertSame($found->getRootParentId(), 2);
+                            $this->assertSame($found->getLevel(), 3);
+                            $this->assertSame($found->getBranchSiblingsIds(), []);
+                            break;
+                        }
+                    case 8:
+                        {
+                            $this->assertSame($found->getId(), 8);
+                            $this->assertSame($found->getData(), 'data8');
+                            $this->assertSame($found->getParentId(), 7);
+                            $this->assertSame($found->getChildrenIds(), []);
+                            $this->assertSame($found->getRecursiveChildrenIds(), []);
+                            $this->assertSame($found->getRootParentId(), 2);
+                            $this->assertSame($found->getLevel(), 4);
+                            $this->assertSame($found->getBranchSiblingsIds(), []);
+                            break;
+                        }
 
                 }
 

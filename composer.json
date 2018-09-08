@@ -1,6 +1,6 @@
 {
-  "name": "zver/package-template",
-  "description": "this is universal package template for development and testing and composer distribution",
+  "name": "zver/adjacency-list",
+  "description": "Simple tree list handling package",
   "minimum-stability": "stable",
   "config": {
     "optimize-autoloader": true
@@ -20,8 +20,7 @@
   },
   "require": {
     "zver/common": "^3.0",
-    "zver/string-helper": "^2.1",
-    "zver/array-helper": "^1.0"
+    "zver/string-helper": "^2.1"
   },
   "require-dev": {
   }

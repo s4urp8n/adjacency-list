@@ -40,8 +40,8 @@ namespace Zver {
          *
          * @param integer $id
          * @param integer $parentId
-         * @param mixed   $data
-         * @param array   $relations
+         * @param mixed $data
+         * @param array $relations
          */
         public function __construct($id, $parentId, $data, &$relations)
         {
@@ -334,9 +334,8 @@ namespace Zver {
 
             }
 
-            return ArrayHelper::load($result)
-                              ->reverseValues()
-                              ->get();
+            return array_combine(array_keys($result), array_reverse($result));
+
         }
 
         public function getDataProperty($property)

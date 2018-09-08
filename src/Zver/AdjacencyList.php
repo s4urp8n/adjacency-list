@@ -71,10 +71,10 @@ namespace Zver {
         /**
          * Add item into list as AdjacencyListItem
          *
-         * @param integer $id        Id of item
-         * @param integer $parent    Id of parent of item
-         * @param mixed   $data      Some additional data
-         * @param array   $relations Initial relations array
+         * @param integer $id Id of item
+         * @param integer $parent Id of parent of item
+         * @param mixed $data Some additional data
+         * @param array $relations Initial relations array
          *
          * @return $this
          */
