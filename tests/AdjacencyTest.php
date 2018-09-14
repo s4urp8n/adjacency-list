@@ -332,4 +332,43 @@ class AdjacencyTest extends PHPUnit\Framework\TestCase
         }
     }
 
+    public function testRecursiveParentIds()
+    {
+        $list = \Zver\AdjacencyList::load($this->getTestRelations());
+
+        $this->assertSame($list->find(6)
+                               ->getRecursiveParentIds(), [5, 4, 3]);
+
+        $this->assertSame($list->find(3)
+                               ->getRecursiveParentIds(), []);
+
+        $this->assertSame($list->find(4)
+                               ->getRecursiveParentIds(), [3]);
+
+    }
+
+    public function testIsParent()
+    {
+        $list = \Zver\AdjacencyList::load($this->getTestRelations());
+
+        $this->assertTrue($list->find(6)
+                               ->haveParentId(5));
+
+        $this->assertTrue($list->find(6)
+                               ->haveParentId(4));
+
+        $this->assertTrue($list->find(6)
+                               ->haveParentId(3));
+
+        $this->assertFalse($list->find(3)
+                                ->haveParentId(5));
+
+        $this->assertTrue($list->find(5)
+                               ->haveParentId(4));
+
+        $this->assertTrue($list->find(5)
+                               ->haveParentId(3));
+
+    }
+
 }

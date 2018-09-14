@@ -346,5 +346,22 @@ namespace Zver {
 
             return $this->data->$property;
         }
+
+        public function getRecursiveParentIds()
+        {
+            $ids = [];
+            $parent = $this;
+            while ($parent->haveParent()) {
+                $parent = $parent->getParent();
+                $ids[] = $parent->getId();
+            }
+
+            return $ids;
+        }
+
+        public function haveParentId($id)
+        {
+            return in_array($id, $this->getRecursiveParentIds());
+        }
     }
 }
